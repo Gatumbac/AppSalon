@@ -13,7 +13,7 @@ function s($html) : string {
     return $s;
 }
 
-function verifyVariable($variable, $location) {
+function verificarVariable($variable, $location) {
     if (!$variable) {
         redirect($location);
     }

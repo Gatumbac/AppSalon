@@ -60,7 +60,6 @@
             id="password"
             placeholder="Tu contraseña"
             name="password"
-            value = "<?php echo s($user->getPassword()) ?>"
             required
         >
     </div>
@@ -69,6 +68,6 @@
 </form>
 
 <div class="acciones">
-    <a href="/">¿Ya tienes una cuenta? <span>Inicia Sesión</span></a></p>
+    <a href="/">¿Ya tienes una cuenta? <span>Inicia Sesión</span></a>
     <a href="/olvide">¿Olvidaste tu contraseña?</a>
 </div>

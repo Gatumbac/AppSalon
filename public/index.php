@@ -8,19 +8,23 @@ use MVC\Router;
 $router = new Router();
 
 // Login
-$router->get('/', [LoginController::class, 'login']);
-$router->get('/', [LoginController::class, 'login']);
+$router->get('/', [LoginController::class, 'formularioLogin']);
+$router->post('/', [LoginController::class, 'login']);
 $router->get('/logout', [LoginController::class, 'logout']);
 
 // Password
-$router->get('/olvide', [LoginController::class, 'forgot']);
-$router->post('/olvide', [LoginController::class, 'forgot']);
-$router->get('/recuperar', [LoginController::class, 'recover']);
-$router->post('/recuperar', [LoginController::class, 'recover']);
+$router->get('/olvide', [LoginController::class, 'olvide']);
+$router->post('/olvide', [LoginController::class, 'olvide']);
+$router->get('/recuperar', [LoginController::class, 'recuperar']);
+$router->post('/recuperar', [LoginController::class, 'recuperar']);
 
 //Account
-$router->get('/crear-cuenta', [LoginController::class, 'createForm']);
-$router->post('/crear-cuenta', [LoginController::class, 'create']);
+$router->get('/crear-cuenta', [LoginController::class, 'formularioCrear']);
+$router->post('/crear-cuenta', [LoginController::class, 'crear']);
+$router->get('/confirmar-cuenta', [LoginController::class, 'confirmar']);
+$router->get('/mensaje', [LoginController::class, 'mensaje']);
+
+
 
 
 
