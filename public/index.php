@@ -13,12 +13,12 @@ $router->post('/', [LoginController::class, 'login']);
 $router->get('/logout', [LoginController::class, 'logout']);
 
 // Password
-$router->get('/olvide', [LoginController::class, 'olvide']);
+$router->get('/olvide', [LoginController::class, 'formularioOlvide']);
 $router->post('/olvide', [LoginController::class, 'olvide']);
-$router->get('/recuperar', [LoginController::class, 'recuperar']);
+$router->get('/recuperar', [LoginController::class, 'formularioRecuperar']);
 $router->post('/recuperar', [LoginController::class, 'recuperar']);
 
-//Account
+//Cuenta
 $router->get('/crear-cuenta', [LoginController::class, 'formularioCrear']);
 $router->post('/crear-cuenta', [LoginController::class, 'crear']);
 $router->get('/confirmar-cuenta', [LoginController::class, 'confirmar']);

@@ -1,7 +1,9 @@
 <h1 class="nombre-pagina">Olvide Password</h1>
 <p class="descripcion-pagina">Escribe tu email para reestablecer tu password</p>
 
-<form class="formulario" method="POST" action="/crear-cuenta">
+<?php include_once __DIR__ . '/../templates/alertas.php' ?>
+
+<form class="formulario" method="POST" action="/olvide">
 
     <div class="campo">
         <label for="email">Email</label>
@@ -10,6 +12,8 @@
             id="email"
             placeholder="Tu email"
             name="email"
+            value = "<?php echo s($user->getEmail()) ?>"
+            required
         >
     </div>
 

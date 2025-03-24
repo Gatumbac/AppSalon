@@ -77,6 +77,10 @@ class Usuario extends ActiveRecord {
         $this->token = $token;
     }
 
+    public function setPassword($password) {
+        $this->password = $password;
+    }
+
     public function validar() {
         self::$alertas = [];
         if (!$this->nombre || strlen($this->nombre) < 3) {
@@ -141,6 +145,27 @@ class Usuario extends ActiveRecord {
         }
         return self::$alertas;
     }
+
+    public function validarPassword() {
+        self::$alertas = [];
+        if (!$this->password) {
+            self::$alertas['error'][] = 'La contraseña es obligatoria';
+        } else if (strlen($this->password) < 6) {
+            self::$alertas['error'][] = 'La contraseña debe tener al menos 6 caracteres';
+        }
+        return self::$alertas;
+    }
+
+    public function validarEmail() {
+        self::$alertas = [];
+        if (!$this->email) {
+            self::$alertas['error'][] = 'El email es obligatorio';
+        } else if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
+            self::$alertas['error'][] = 'Email con formato inválido';
+        }
+        return self::$alertas;
+    }
+    
 
     public function comprobarCredenciales($password) {
         $resultado = password_verify($password, $this->getPassword());
