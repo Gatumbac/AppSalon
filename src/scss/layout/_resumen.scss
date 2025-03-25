@@ -1,0 +1,30 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.contenido-resumen {
+    p {
+        @include m.tablet {
+            text-align: left;
+        }
+    }
+
+    span {
+        color: v.$azul;
+        font-weight: v.$bold;
+        font-size: 2.4rem;
+    }
+
+    .heading-servicios {
+        margin: 0;
+    }
+}
+
+.contenedor-servicio {
+    border-bottom: 1px solid v.$gris;
+    padding: 3rem 0;
+
+    &:last-of-type {
+        margin-bottom: v.$separacion;
+    }
+
+}

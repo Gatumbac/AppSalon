@@ -1,7 +1,7 @@
 <?php
 namespace Model;
 
-abstract class ActiveRecord {
+abstract class ActiveRecord implements \JsonSerializable {
     protected static $db;
     protected static $columnasDB = [];
     protected static $alertas = [];
@@ -154,5 +154,10 @@ abstract class ActiveRecord {
                 $this->$atributo = $valor;
             }
         }
+    }
+
+    public function jsonSerialize(): mixed {
+        $vars = get_object_vars($this);
+        return $vars;
     }
 }
