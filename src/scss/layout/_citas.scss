@@ -17,3 +17,20 @@
 .ocultar {
     visibility: hidden;
 }
+
+.barra-sesion {
+    p {
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    .boton-logout {
+        margin: 0;
+    }
+
+    @include m.tablet {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

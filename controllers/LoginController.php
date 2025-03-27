@@ -39,7 +39,9 @@ class LoginController {
     }
 
     public static function logout() {
-        echo 'From Logout';
+        session_start();
+        $_SESSION = [];
+        redirect('/');
     }
 
     public static function formularioOlvide(Router $router) {

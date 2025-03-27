@@ -5,3 +5,7 @@
 .boton {
     @include m.boton(v.$azul, v.$blanco)
 }
+
+.boton-logout {
+    @include m.boton(v.$grisOscuro, v.$blanco);
+}

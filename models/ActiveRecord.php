@@ -8,6 +8,16 @@ abstract class ActiveRecord implements \JsonSerializable {
     protected static $tabla = '';
     protected $id;
 
+    protected static $ultimoError = '';
+
+    protected static function registrarError($mensaje) {
+        self::$ultimoError = $mensaje;
+    }
+    
+    public static function getUltimoError() {
+        return self::$ultimoError;
+    }
+
     public abstract function validar();
 
     public static function setDB($database) {
@@ -65,10 +75,14 @@ abstract class ActiveRecord implements \JsonSerializable {
         try {
             $resultado = self::$db->query($query);
         } catch (\Throwable $th) {
-            echo $th->getMessage();
+            static::registrarError($th->getMessage());
         }
 
-        return $resultado ?? false;
+        return [
+            'resultado' =>  $resultado ?? false,
+            'error' => static::getUltimoError(),
+            'id' => self::$db->insert_id
+         ];
     }
 
     public function actualizar() {
@@ -89,7 +103,7 @@ abstract class ActiveRecord implements \JsonSerializable {
         try {
             $resultado = self::$db->query($query);
         } catch (\Throwable $th) {
-            echo $th->getMessage();
+            static::registrarError($th->getMessage());
         }
 
         return $resultado ?? false;
@@ -102,7 +116,7 @@ abstract class ActiveRecord implements \JsonSerializable {
         try {
             $resultado = self::$db->query($query);
         } catch (\Throwable $th) {
-            echo $th->getMessage();
+            static::registrarError($th->getMessage());
         }
 
         return $resultado ?? false;

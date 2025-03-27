@@ -23,3 +23,10 @@ function redirect($location) {
     header('Location: ' . $location);
     exit;
 }
+
+function isAuth() {
+    if (!isset($_SESSION['login'])) {
+        header('Location: /');
+        exit;
+    }
+}

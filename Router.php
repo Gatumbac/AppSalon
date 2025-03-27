@@ -16,9 +16,6 @@ class Router {
     public function checkRoute() {
         $actualUrl = $_SERVER['PATH_INFO'] ?? '/';
         $method = $_SERVER['REQUEST_METHOD'];
-        if (in_array($actualUrl, [])) {
-            self::verifyAuth();
-        }
 
         $fn = $this->getRoutes[$actualUrl] ?? null;
         if ($method === 'POST') {
@@ -26,17 +23,6 @@ class Router {
         }
 
         $this->executeFunction($fn);
-    }
-
-
-    public static function verifyAuth() {
-        session_start();
-        $auth = $_SESSION['login'] ?? false;
-
-        if (!$auth) {
-            header('Location: /');
-            exit;
-        }
     }
 
     public function executeFunction($fn) {
