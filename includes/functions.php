@@ -30,3 +30,14 @@ function isAuth() {
         exit;
     }
 }
+
+function isAdmin() {
+    if (!isset($_SESSION['admin'])) {
+        header('Location: /');
+        exit;
+    }
+}
+
+function esUltimo(string $actual, string $next) {
+    return $actual !== $next;
+}

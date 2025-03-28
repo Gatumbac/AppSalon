@@ -56,6 +56,12 @@ abstract class ActiveRecord implements \JsonSerializable {
         return array_shift($resultado);
     }
 
+    //consultas libres
+    public static function SQL($query) {
+        $array = static::consultarTabla($query);
+        return $array;
+    }
+
     public function guardar() {
         if(!$this->id) {
             $resultado = $this->crear();

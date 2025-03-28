@@ -21,6 +21,12 @@
 
     .app {
         padding: 3rem 0;
+
+        @include m.tablet {
+            overflow-y: auto;
+            overflow-x: hidden; 
+            padding-right: 1.5rem;
+        }
     }
 
 }

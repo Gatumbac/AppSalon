@@ -1,7 +1,4 @@
-<div class="barra-sesion">
-    <p>Bienvenido(a), <?php echo $nombre ?? '' ?></p>
-    <a class="boton-logout" href="/logout">Cerrar Sesión</a>
-</div>
+<?php include_once __DIR__ . '/../templates/barra-sesion.php' ?>
 
 <h1 class="nombre-pagina">Crea Tu Cita</h1>
 <p class="descripcion-pagina">Selecciona tus servicios y coloca tus datos</p>

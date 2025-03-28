@@ -5,6 +5,7 @@ import { src, dest, watch, series } from 'gulp';
 import * as dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 import sharp from 'sharp';
+import terser from 'gulp-terser';
 
 const sass = gulpSass(dartSass);
 
@@ -12,8 +13,9 @@ const sass = gulpSass(dartSass);
 export default series(js, css, dev);
 
 export function js( done ) {
-    src('src/js/app.js')
-        .pipe(dest('public/build/js'));
+    src('src/js/**/*.js', {sourcemaps: true})
+        .pipe(terser())
+        .pipe(dest('public/build/js', {sourcemaps: '.'}));
     done();
 }
 
